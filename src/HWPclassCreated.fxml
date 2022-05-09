@@ -3,7 +3,6 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Ellipse?>
 <?import javafx.scene.shape.Rectangle?>
@@ -65,45 +64,17 @@
             <Font size="30.0" />
          </font>
       </Button>
-      <TextField fx:id="assignmentName" layoutX="383.0" layoutY="301.0" promptText="HW4">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </TextField>
       <Text layoutX="899.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0">
          <font>
             <Font name="System Bold" size="34.0" />
          </font>
       </Text>
-      <Button layoutX="666.0" layoutY="536.0" mnemonicParsing="false" onAction="#handleCreateNewAssignment" text="Create">
+      <Button layoutX="590.0" layoutY="389.0" mnemonicParsing="false" onAction="#handleNewClass" prefHeight="131.0" prefWidth="263.0" text="Create Another?" wrapText="true">
          <font>
-            <Font size="25.0" />
+            <Font name="System Bold" size="20.0" />
          </font>
       </Button>
-      <TextField fx:id="assignmentDueDate" layoutX="785.0" layoutY="301.0" promptText="MM/DD/YYYY">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </TextField>
-      <Text layoutX="383.0" layoutY="283.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Assignment Name:">
-         <font>
-            <Font size="30.0" />
-         </font></Text>
-      <Text layoutX="875.0" layoutY="282.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date:">
-         <font>
-            <Font size="30.0" />
-         </font></Text>
-      <Text layoutX="639.0" layoutY="424.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Class Name:">
-         <font>
-            <Font size="30.0" />
-         </font>
-      </Text>
-      <TextField fx:id="assignmentClassName" layoutX="595.0" layoutY="444.0" promptText="Precalculus">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </TextField>
-      <TableView fx:id="table_users" layoutX="279.0" layoutY="136.0" prefHeight="690.0" prefWidth="925.0" visible="false">
+      <TableView fx:id="table_users" layoutX="259.0" layoutY="116.0" prefHeight="690.0" prefWidth="925.0" visible="false">
          <columns>
             <TableColumn fx:id="col_assignment" prefWidth="178.0" text="Assignment Name:" />
             <TableColumn fx:id="col_class" minWidth="0.0" prefWidth="142.0" text="Class Name:" />
@@ -112,17 +83,22 @@
             <TableColumn fx:id="col_button" prefWidth="117.0" />
          </columns>
       </TableView>
-      <TableView fx:id="table_classes" layoutX="284.0" layoutY="106.0" prefHeight="718.0" prefWidth="342.0" visible="false">
+      <Text layoutX="627.0" layoutY="338.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Class Created!" wrappingWidth="192.048828125">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="556.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="20.0" text="NEW CLASS">
+         <font>
+            <Font name="System Bold" size="60.0" />
+         </font>
+      </Text>
+      <TableView fx:id="table_classes" layoutX="294.0" layoutY="116.0" prefHeight="718.0" prefWidth="342.0" visible="false">
          <columns>
             <TableColumn fx:id="col_class1" prefWidth="215.0" text="Classes" />
             <TableColumn fx:id="col_button1" prefWidth="130.0" />
          </columns>
       </TableView>
-      <Text fill="WHITE" layoutX="450.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="20.0" text="NEW ASSIGNMENT">
-         <font>
-            <Font name="System Bold" size="60.0" />
-         </font>
-      </Text>
       <TableView fx:id="table_groups" layoutX="328.0" layoutY="136.0" prefHeight="657.0" prefWidth="810.0" visible="false">
          <columns>
             <TableColumn fx:id="col_groupClass" prefWidth="246.0" text="Class Name:" />
@@ -130,15 +106,5 @@
             <TableColumn fx:id="col_button2" prefWidth="116.0" />
          </columns>
       </TableView>
-      <Text layoutX="641.0" layoutY="138.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description:">
-         <font>
-            <Font size="30.0" />
-         </font>
-      </Text>
-      <TextField fx:id="assignmentDesc" layoutX="595.0" layoutY="170.0" promptText="Assignment Description">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </TextField>
    </children>
 </AnchorPane>

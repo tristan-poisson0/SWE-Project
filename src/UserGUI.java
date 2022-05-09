@@ -60,7 +60,6 @@ public class UserGUI extends Application {
 	public void logIn(Stage stage) {
 		Stage logIn=new Stage();
 		stage.close();
-		
 		GridPane gridPane = new GridPane();
 		gridPane.setHgap(5);
 		gridPane.setVgap(5);
@@ -179,7 +178,7 @@ public class UserGUI extends Application {
 					}
 					else if (!passW.equalsIgnoreCase(Password)) {passwordDNE(accountCheck); stage.close(); break;}
 				}
-			} if (!userN.equalsIgnoreCase(rs.getString("username")) && rs.next() == false){usernameDNE(accountCheck); stage.close();}
+			} if (!userN.equalsIgnoreCase(rs.getString("username")) && rs.next()==false) {usernameDNE(accountCheck); stage.close();}
 			
 		} catch(SQLException sqle) {
 			System.err.println(sqle);
@@ -314,6 +313,9 @@ public class UserGUI extends Application {
 					  if (!passWord.getText().equals(passWord2.getText())) {
 						  passMatchError(createNew);
 					  }
+					  if (JavaMailUtil.isValid(emailAddress.getText()) == false) {
+						  emailInvalidError(createNew);
+					  }
 					  else {
 						  accountCreated(createNew, userName, passWord, firstName, lastName, emailAddress);
 					  }
@@ -363,7 +365,49 @@ public class UserGUI extends Application {
 		emptyErr.setScene(scene3);
 		emptyErr.show();
 	}
-	
+	public void emailInvalidError (Stage stage) {
+		Stage emailErr=new Stage();
+		stage.close();
+		
+		GridPane gridPane3=new GridPane();
+		gridPane3.setAlignment(Pos.CENTER);
+		Scene scene3=new Scene(gridPane3, 400, 250);
+		gridPane3.setHgap(5);
+		gridPane3.setVgap(5);
+		gridPane3.add(new Label("**Error: Email Address Invalid**"), 0, 0);
+		gridPane3.add(new Label("First Name:"), 0, 1);
+		gridPane3.add(firstName, 1, 1);
+		gridPane3.add(new Label("Last Name:"), 0, 2);
+		gridPane3.add(lastName, 1, 2);
+		gridPane3.add(new Label("User Name:"), 0, 3);
+		gridPane3.add(userName, 1, 3);
+		gridPane3.add(new Label("Password:"), 0, 4);
+		gridPane3.add(passWord, 1, 4);
+		gridPane3.add(new Label("Re-Enter Password:"), 0, 5);
+		gridPane3.add(passWord2, 1, 5);
+		gridPane3.add(new Label("Email Address:"), 0, 6);
+		gridPane3.add(emailAddress, 1, 6);
+		gridPane3.add(createAccount, 1, 7);
+		
+		createAccount.setOnAction(e-> { 
+			  if (firstName.getText().isEmpty() || lastName.getText().isEmpty() || userName.getText().isEmpty() || passWord.getText().isEmpty() || passWord2.getText().isEmpty() || emailAddress.getText().isEmpty()) {
+				  newEmptyError(emailErr);
+			  } 
+			  if (!passWord.getText().equals(passWord2.getText())) {
+				  passMatchError(emailErr);
+			  }
+			  if (JavaMailUtil.isValid(emailAddress.getText()) == false) {
+				  emailInvalidError(emailErr);
+			  }
+			  else {
+				  accountCreated(emailErr, userName, passWord, firstName, lastName, emailAddress);			  }
+		  });
+		
+		emailErr.setTitle("New Account");
+		emailErr.setScene(scene3);
+		emailErr.show();
+	}
+
 	public void passMatchError (Stage stage) {
 		Stage passError=new Stage();
 		stage.close();
